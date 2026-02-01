@@ -3,89 +3,129 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Marwan Links</title>
+    <title>Marwan Tarek</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <button id="themeToggle" class="theme-btn">
-        <i class="fa-solid fa-sun"></i>
-    </button>
+    <div class="background">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div id="toast">Text copied successfully!</div>
 
     <div class="container">
-        <header class="profile-header">
-            <img src="pic.jpg" alt="Marwan Tarek" class="profile-img" id="profilePic">
-            <h1 class="name">Marwan Tarek</h1>
-            <p class="bio">Web & App Developer | E-JUST Engineering Student</p>
-            
-            <div class="skills-container">
-                <span class="skill-badge"><i class="fa-brands fa-html5"></i>HTML</span>
-                <span class="skill-badge"><i class="fa-brands fa-css3-alt"></i>CSS</span>
-                <span class="skill-badge"><i class="fa-brands fa-js"></i>JS</span>
-                <span class="skill-badge"><i class="fa-solid fa-code"></i>C#</span>
+        
+        <header class="profile-header fade-in">
+            <div class="img-box">
+                <img src="pic.jpg" alt="Marwan Tarek" class="profile-img">
+                <div class="online-dot"></div>
             </div>
+            <h1 class="name">Marwan Tarek</h1>
+            <p class="bio">Engineering Student | Web & App Developer</p>
         </header>
 
-        <main class="links-container" id="linksList">
+        <main class="links-wrapper">
             
-            <div class="contact-row">
-                <a href="mailto:marwan.120250174@ejust.edu.eg" class="link-card email">
-                    <i class="fa-solid fa-envelope"></i>
-                    <span>Email</span>
-                </a>
-                
-                <a href="https://wa.me/+201558816534" target="_blank" class="link-card whatsapp">
-                    <i class="fa-brands fa-whatsapp"></i>
-                    <span>WhatsApp</span>
-                </a>
+            <div class="section-title fade-in"><span>Social Media</span></div>
+
+            <a href="https://www.instagram.com/itsengmarwan" target="_blank" class="card instagram fade-in-up delay-1">
+                <div class="icon-box"><i class="fa-brands fa-instagram"></i></div>
+                <div class="text-box">
+                    <h3>Instagram</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left arrow"></i>
+            </a>
+
+            <a href="https://www.snapchat.com/add/mtg-6" target="_blank" class="card snapchat fade-in-up delay-2">
+                <div class="icon-box"><i class="fa-brands fa-snapchat"></i></div>
+                <div class="text-box">
+                    <h3>Snapchat</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left arrow"></i>
+            </a>
+
+            <a href="https://www.tiktok.com/@itsengmarwan" target="_blank" class="card tiktok fade-in-up delay-3">
+                <div class="icon-box"><i class="fa-brands fa-tiktok"></i></div>
+                <div class="text-box">
+                    <h3>TikTok</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left arrow"></i>
+            </a>
+
+            <a href="https://www.instagram.com/itsengmarwan" target="_blank" class="card facebook fade-in-up delay-1">
+                <div class="icon-box"><i class="fa-brands fa-facebook-f"></i></div>
+                <div class="text-box">
+                    <h3>FaceBook</h3>
+                </div>
+                <i class="fa-solid fa-chevron-left arrow"></i>
+            </a>
+
+            <div class="section-title fade-in"><span>Contact Info</span></div>
+
+            <div class="card contact-card fade-in-up delay-4" onclick="copyToClipboard('+201558816534')">
+                <div class="icon-box phone"><i class="fa-solid fa-phone"></i></div>
+                <div class="text-box">
+                    <h3>Mobile Number</h3>
+                    <p>+20 155 881 6534</p>
+                </div>
+                <i class="fa-regular fa-copy copy-icon"></i>
             </div>
-            
-            <a href="https://www.instagram.com/itsengmarwan" target="_blank" class="link-card instagram">
-                <i class="fa-brands fa-instagram"></i>
-                <span>Instagram</span>
+
+            <a href="https://wa.me/+201558816534" target="_blank" class="card whatsapp fade-in-up delay-5">
+                <div class="icon-box"><i class="fa-brands fa-whatsapp"></i></div>
+                <div class="text-box">
+                    <h3>WhatsApp</h3>
+                    <p>Contact me directly</p>
+                </div>
+                <i class="fa-solid fa-chevron-left arrow"></i>
             </a>
 
-            <a href="https://www.snapchat.com/add/mtg-6" target="_blank" class="link-card snapchat">
-                <i class="fa-brands fa-snapchat"></i>
-                <span>Snapchat</span>
+            <div class="card contact-card fade-in-up delay-6" onclick="copyToClipboard('marwan.120250174@ejust.edu.eg')">
+                <div class="icon-box email"><i class="fa-solid fa-envelope"></i></div>
+                <div class="text-box">
+                    <h3>Email Address</h3>
+                    <p>Contact me in formal way</p>
+                </div>
+                <i class="fa-regular fa-copy copy-icon"></i>
+            </div>
+
+            <div class="section-title fade-in"><span>Professional Career</span></div>
+
+            <a href="https://www.linkedin.com/in/marwan-tarek-4783263a5" target="_blank" class="card linkedin fade-in-up delay-7">
+                <div class="icon-box"><i class="fa-brands fa-linkedin-in"></i></div>
+                <div class="text-box">
+                    <h3>LinkedIn</h3>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
             </a>
 
-            <a href="https://www.tiktok.com/@itsengmarwan" target="_blank" class="link-card tiktok">
-                <i class="fa-brands fa-tiktok"></i>
-                <span>TikTok</span>
+            <a href="https://github.com/9mtg6" target="_blank" class="card github fade-in-up delay-8">
+                <div class="icon-box"><i class="fa-brands fa-github"></i></div>
+                <div class="text-box">
+                    <h3>GitHub</h3>
+                </div>
+                <i class="fa-solid fa-arrow-up-right-from-square arrow"></i>
             </a>
 
-            <a href="https://github.com/9mtg6" target="_blank" class="link-card github">
-                <i class="fa-brands fa-github"></i>
-                <span>GitHub</span>
-            </a>
-
-            <a href="https://www.linkedin.com/in/marwan-tarek-4783263a5" target="_blank" class="link-card linkedin">
-                <i class="fa-brands fa-linkedin-in"></i>
-                <span>LinkedIn</span>
-            </a>
-
-            <a href="https://discord.gg/E4EseHXu" target="_blank" class="link-card discord">
-                <i class="fa-brands fa-discord"></i>
-                <span>Discord</span>
-            </a>
-
-            <a href="https://www.facebook.com/share/18Da8ezHNe/" target="_blank" class="link-card facebook">
-                <i class="fa-brands fa-facebook-f"></i>
-                <span>Facebook</span>
-            </a>
-
-            <a href="projects.html" class="link-card website special-link">
-                <i class="fa-solid fa-laptop-code"></i>
-                <span>My projects and websites</span>
+            <a href="projects.html" class="card special-project fade-in-up delay-9">
+                <div class="icon-box"><i class="fa-solid fa-laptop-code"></i></div>
+                <div class="text-box">
+                    <h3>My Projects</h3>
+                    <p>Where I publish my work</p>
+                </div>
+                <i class="fa-solid fa-rocket arrow"></i>
             </a>
 
         </main>
 
         <footer>
-            <p>تم التطوير بواسطة Marwan Tarek &copy; 2025</p>
+            <p>Digital Business Card &copy; 2026</p>
+            <p>Designed by <span class="highlight">Marwan Tarek</span></p>
         </footer>
     </div>
 

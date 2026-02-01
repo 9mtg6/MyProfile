@@ -1,40 +1,32 @@
-document.addEventListener('DOMContentLoaded', () => {
+// دالة لنسخ النص إلى الحافظة
+function copyToClipboard(text) {
+    // إنشاء عنصر مؤقت
+    const el = document.createElement('textarea');
+    el.value = text;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+
+    // إظهار رسالة النجاح
+    showToast();
+}
+
+// دالة إظهار رسالة التنبيه (Toast)
+function showToast() {
+    const toast = document.getElementById("toast");
+    toast.className = "show";
+    setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 3000);
+}
+
+// إضافة تأثير بسيط عند تحريك الماوس للخلفية (اختياري للكمبيوتر)
+document.addEventListener('mousemove', (e) => {
+    const blobs = document.querySelectorAll('.blob');
+    const x = e.clientX / window.innerWidth;
+    const y = e.clientY / window.innerHeight;
     
-    // --- 1. Animation للروابط عند الفتح ---
-    const cards = document.querySelectorAll('.link-card, .project-card');
-    cards.forEach((card, index) => {
-        card.style.opacity = '0';
-        card.style.transform = 'translateY(20px)';
-        setTimeout(() => {
-            card.style.transition = 'all 0.4s ease';
-            card.style.opacity = '1';
-            card.style.transform = 'translateY(0)';
-        }, index * 100);
-    });
-
-    // --- 2. التحكم في الوضع الليلي/النهاري ---
-    const toggleBtn = document.getElementById('themeToggle');
-    const body = document.body;
-    const icon = toggleBtn.querySelector('i');
-
-    // التحقق من الوضع المحفوظ سابقاً
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-        body.classList.add('light-mode');
-        icon.classList.replace('fa-sun', 'fa-moon');
-    }
-
-    // عند الضغط على الزر
-    toggleBtn.addEventListener('click', () => {
-        body.classList.toggle('light-mode');
-        
-        // تغيير الأيقونة وحفظ الحالة
-        if (body.classList.contains('light-mode')) {
-            icon.classList.replace('fa-sun', 'fa-moon');
-            localStorage.setItem('theme', 'light');
-        } else {
-            icon.classList.replace('fa-moon', 'fa-sun');
-            localStorage.setItem('theme', 'dark');
-        }
+    blobs.forEach((blob, index) => {
+        const speed = (index + 1) * 20;
+        blob.style.transform = `translate(${x * speed}px, ${y * speed}px)`;
     });
 });
