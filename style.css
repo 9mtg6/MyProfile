@@ -1,0 +1,173 @@
+/* إعدادات المتغيرات (الألوان) للوضع الليلي (الافتراضي) */
+:root {
+    --bg-gradient: linear-gradient(45deg, #121212 0%, #1a1a2e 100%);
+    --text-color: #ffffff;
+    --card-bg: rgba(255, 255, 255, 0.08);
+    --hover-bg: rgba(255, 255, 255, 0.2);
+    --border-color: rgba(255, 255, 255, 0.1);
+    --primary-color: #ffd900; /* اللون الذهبي */
+    --shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+/* إعدادات الوضع النهاري (Light Mode) */
+body.light-mode {
+    --bg-gradient: linear-gradient(45deg, #f0f2f5 0%, #ffffff 100%);
+    --text-color: #333333;
+    --card-bg: rgba(0, 0, 0, 0.05);
+    --hover-bg: rgba(0, 0, 0, 0.1);
+    --border-color: rgba(0, 0, 0, 0.1);
+    --primary-color: #007bff; /* الأزرق */
+    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+    font-family: 'Tajawal', sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; /* توسيط عمودي */
+    padding: 40px 20px;
+    transition: background 0.5s ease, color 0.5s ease;
+}
+
+.container {
+    width: 100%;
+    max-width: 450px;
+    text-align: center;
+}
+
+/* زر تغيير الثيم */
+.theme-btn {
+    position: absolute;
+    top: 20px;
+    left: 20px; /* في اليسار لأن الصفحة عربي RTL */
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    color: var(--text-color);
+    padding: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 1.2rem;
+    transition: 0.3s;
+}
+.theme-btn:hover { background: var(--hover-bg); transform: rotate(15deg); }
+
+/* الصورة والنصوص */
+.profile-img {
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    border: 3px solid var(--primary-color);
+    object-fit: cover;
+    margin-bottom: 15px;
+    box-shadow: var(--shadow);
+}
+.name { font-size: 1.8rem; margin-bottom: 5px; }
+.bio { font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px; }
+
+/* قسم المهارات */
+.skills-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+.skill-badge {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.skill-badge i { color: var(--primary-color); }
+
+/* زر تحميل الـ CV */
+.cv-btn {
+    display: inline-block;
+    background: var(--primary-color);
+    color: #000; /* النص أسود ليكون واضحاً */
+    text-decoration: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.9rem;
+    margin-bottom: 30px;
+    transition: 0.3s;
+}
+.cv-btn:hover { transform: scale(1.05); opacity: 0.9; }
+body.light-mode .cv-btn { color: #fff; } /* في الوضع الفاتح النص أبيض */
+
+/* الروابط */
+.links-container { display: flex; flex-direction: column; gap: 12px; }
+
+.link-card {
+    display: flex;
+    align-items: center;
+    background: var(--card-bg);
+    color: var(--text-color);
+    text-decoration: none;
+    padding: 14px 20px;
+    border-radius: 12px;
+    border: 1px solid var(--border-color);
+    backdrop-filter: blur(5px);
+    transition: 0.3s;
+}
+.link-card:hover {
+    background: var(--hover-bg);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+}
+.link-card i { width: 30px; font-size: 1.3rem; text-align: center; margin-left: 10px; }
+.link-card span { font-weight: bold; flex-grow: 1; }
+
+/* ألوان خاصة */
+.facebook:hover { color: #1877f2; border-color: #1877f2; }
+.instagram:hover { color: #e1306c; border-color: #e1306c; }
+.linkedin:hover { color: #0077b5; border-color: #0077b5; }
+.github:hover { color: #6e5494; border-color: #6e5494; }
+.whatsapp:hover { color: #25D366; border-color: #25D366; }
+.email:hover { color: #ea4335; border-color: #ea4335; }
+
+.contact-row { display: flex; gap: 10px; }
+.contact-row .link-card { flex: 1; justify-content: center; padding: 12px; }
+.contact-row span { flex-grow: 0; font-size: 0.9rem; }
+
+.special-link { border-color: var(--primary-color); color: var(--primary-color); }
+.special-link:hover { background: var(--primary-color); color: #000; }
+body.light-mode .special-link:hover { color: #fff; }
+
+/* صفحة المشاريع */
+.back-btn {
+    text-decoration: none; color: var(--text-color);
+    display: block; margin-bottom: 10px; font-weight: bold;
+}
+.projects-grid { display: grid; gap: 15px; }
+.project-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    padding: 15px;
+    text-align: right;
+    transition: 0.3s;
+}
+.project-card:hover { transform: translateY(-3px); background: var(--hover-bg); }
+.p-icon { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 8px; }
+.project-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
+.project-card p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 10px; }
+.p-tags span {
+    font-size: 0.75rem; background: rgba(128,128,128,0.2); padding: 3px 8px; border-radius: 5px; margin-left: 5px;
+}
+.visit-btn {
+    display: inline-block; margin-top: 10px;
+    font-size: 0.85rem; color: var(--primary-color); text-decoration: none; font-weight: bold;
+}
+
+footer { margin-top: 30px; font-size: 0.8rem; opacity: 0.6; }
