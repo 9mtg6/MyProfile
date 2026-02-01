@@ -72,7 +72,7 @@ body {
 }
 .section-title span { padding: 0 10px; z-index: 2; border-radius: 10px; }
 .section-title::after {
-    content: ''; flex-grow: 1; height: 1px; margin-right: 10px;
+    content: ''; flex-grow: 1; height: 1px; background: var(--glass-border); margin-right: 10px;
 }
 
 /* ================= الكروت (Core Design) ================= */
