@@ -20,9 +20,10 @@ body {
     justify-content: center;
     overflow-x: hidden;
     padding: 30px 15px;
+    direction: ltr; /* جعل الاتجاه من اليسار لليمين لأن النصوص إنجليزية */
 }
 
-/* ================= الخلفية المتحركة (Floating Blobs) ================= */
+/* ================= الخلفية المتحركة ================= */
 .background {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; overflow: hidden;
 }
@@ -40,22 +41,13 @@ body {
 }
 
 /* ================= الحاوية والهيدر ================= */
-.container {
-    width: 100%; max-width: 450px; /* عرض مناسب للموبايل */
-    z-index: 1;
-}
+.container { width: 100%; max-width: 450px; z-index: 1; }
+.profile-header { text-align: center; margin-bottom: 30px; }
 
-.profile-header {
-    text-align: center; margin-bottom: 30px;
-}
-
-.img-box {
-    position: relative; width: 130px; height: 130px; margin: 0 auto 15px;
-}
+.img-box { position: relative; width: 130px; height: 130px; margin: 0 auto 15px; }
 .profile-img {
     width: 100%; height: 100%; border-radius: 50%; object-fit: cover;
-    border: 3px solid rgba(255,255,255,0.2);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    border: 3px solid rgba(255,255,255,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.5);
 }
 .online-dot {
     position: absolute; bottom: 10px; right: 10px;
@@ -70,12 +62,12 @@ body {
     display: flex; align-items: center; margin: 25px 0 15px;
     color: var(--text-secondary); font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
 }
-.section-title span { padding: 0 10px; z-index: 2; border-radius: 10px; }
+.section-title span { background: var(--bg-dark); padding: 5px 10px; border-radius: 8px; z-index: 2; }
 .section-title::after {
-    content: ''; flex-grow: 1; height: 1px; background: var(--glass-border); margin-right: 10px;
+    content: ''; flex-grow: 1; height: 1px; background: var(--glass-border); margin-left: 10px;
 }
 
-/* ================= الكروت (Core Design) ================= */
+/* ================= الكروت ================= */
 .links-wrapper { display: flex; flex-direction: column; gap: 12px; }
 
 .card {
@@ -91,24 +83,13 @@ body {
     position: relative; overflow: hidden;
     cursor: pointer;
 }
-
-/* تأثير اللمعان عند التمرير */
-.card::before {
-    content: ''; position: absolute; top: 0; left: -100%;
-    width: 100%; height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
-    transition: 0.5s;
-}
-.card:hover::before { left: 100%; }
-
 .card:hover { transform: translateY(-3px); border-color: rgba(255,255,255,0.3); background: rgba(255,255,255,0.12); }
 .card:active { transform: scale(0.98); }
 
-/* الأيقونات داخل الكروت */
 .icon-box {
     width: 45px; height: 45px; border-radius: 12px;
     display: flex; align-items: center; justify-content: center;
-    font-size: 1.4rem; margin-left: 15px;
+    font-size: 1.4rem; margin-right: 15px; /* تم التعديل لتناسب LTR */
     background: rgba(255,255,255,0.05);
     transition: 0.3s;
 }
@@ -117,9 +98,7 @@ body {
 .text-box p { font-size: 0.8rem; color: var(--text-secondary); }
 .arrow, .copy-icon { font-size: 0.9rem; color: var(--text-secondary); opacity: 0.7; }
 
-/* ================= ألوان البرامج (Brand Identity) ================= */
-/* عند الهوفر، الأيقونة تأخذ لون البراند */
-
+/* ================= ألوان البرامج ================= */
 .instagram:hover .icon-box { background: linear-gradient(45deg, #f09433, #dc2743, #bc1888); color: #fff; }
 .snapchat:hover .icon-box { background: #FFFC00; color: #000; }
 .tiktok:hover .icon-box { background: #000; color: #fff; text-shadow: -1.5px -1.5px 0 #00f2ea , 1.5px 1.5px 0 #f20000; border: 1px solid #333; }
@@ -128,35 +107,140 @@ body {
 .facebook:hover .icon-box { background: #1877f2; color: #fff; }
 .github:hover .icon-box { background: #fff; color: #000; }
 .contact-card:hover .icon-box.phone { background: #0179ff; color: #fff; }
-.contact-card:hover .icon-box.email { background: #ffffff; color: #000; }
+.contact-card:hover .icon-box.email { background: #ea4335; color: #fff; }
 
-/* الكارت المميز للمشاريع */
+/* كارت المشاريع */
 .special-project { border: 1px solid var(--primary-accent); box-shadow: 0 0 15px rgba(0, 242, 234, 0.1); }
 .special-project:hover .icon-box { background: var(--primary-accent); color: #000; }
 .special-project h3 { color: var(--primary-accent); }
 
-/* ================= أنيميشن الدخول (Entrance Animations) ================= */
+/* ================= الأنيميشن ================= */
 .fade-in { opacity: 0; animation: fadeIn 0.8s forwards; }
 .fade-in-up { opacity: 0; transform: translateY(20px); animation: fadeInUp 0.6s forwards; }
 
 .delay-1 { animation-delay: 0.1s; } .delay-2 { animation-delay: 0.2s; } .delay-3 { animation-delay: 0.3s; }
 .delay-4 { animation-delay: 0.4s; } .delay-5 { animation-delay: 0.5s; } .delay-6 { animation-delay: 0.6s; }
 .delay-7 { animation-delay: 0.7s; } .delay-8 { animation-delay: 0.8s; } .delay-9 { animation-delay: 0.9s; }
+.delay-10 { animation-delay: 1.0s; }
 
 @keyframes fadeIn { to { opacity: 1; } }
 @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
 
-/* ================= رسالة النسخ (Toast Notification) ================= */
+/* ================= التوست ================= */
 #toast {
-    visibility: hidden; min-width: 250px; background-color: #333; color: #fff;
-    text-align: center; border-radius: 50px; padding: 16px; position: fixed;
-    z-index: 100; left: 50%; bottom: 30px; transform: translateX(-50%); font-size: 0.9rem;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3); border: 1px solid var(--primary-accent);
+    visibility: hidden; min-width: 250px; background-color: rgba(30, 30, 30, 0.9); color: #fff;
+    text-align: center; border-radius: 50px; padding: 12px 20px; position: fixed;
+    z-index: 100; left: 50%; bottom: 40px; transform: translateX(-50%); font-size: 0.95rem;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4); border: 1px solid var(--primary-accent);
+    backdrop-filter: blur(5px); display: flex; align-items: center; justify-content: center; gap: 10px;
 }
-#toast.show { visibility: visible; animation: fadein 0.5s, fadeout 0.5s 2.5s; }
+#toast.show { visibility: visible; animation: fadein 0.4s, fadeout 0.4s 2.5s; }
 
-@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 30px; opacity: 1;} }
-@keyframes fadeout { from {bottom: 30px; opacity: 1;} to {bottom: 0; opacity: 0;} }
+@keyframes fadein { from {bottom: 0; opacity: 0;} to {bottom: 40px; opacity: 1;} }
+@keyframes fadeout { from {bottom: 40px; opacity: 1;} to {bottom: 0; opacity: 0;} }
 
 footer { margin-top: 40px; text-align: center; font-size: 0.8rem; color: var(--text-secondary); opacity: 0.6; }
 .highlight { color: var(--primary-accent); }
+/* ================= تنسيقات صفحة المشاريع ================= */
+
+/* توسيع الحاوية في صفحة المشاريع */
+.projects-container {
+    max-width: 800px; /* عرض أكبر ليستوعب الكروت */
+}
+
+/* الهيدر وزر الرجوع */
+.projects-header {
+    text-align: left; /* محاذاة لليسار */
+    margin-bottom: 40px;
+}
+.projects-header h1 {
+    font-size: 2rem; margin-bottom: 5px; color: var(--primary-accent);
+}
+.projects-header p {
+    color: var(--text-secondary);
+}
+.back-btn {
+    display: inline-flex; align-items: center; gap: 8px;
+    color: var(--text-primary); text-decoration: none;
+    margin-bottom: 20px; font-weight: bold; opacity: 0.8; transition: 0.3s;
+}
+.back-btn:hover { color: var(--primary-accent); transform: translateX(-5px); }
+
+/* الشبكة (Grid System) */
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* تجاوب تلقائي */
+    gap: 25px;
+}
+
+/* كارت المشروع */
+.project-card {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    border-radius: 20px;
+    overflow: hidden; /* لمنع خروج الصورة */
+    transition: 0.3s;
+    display: flex; flex-direction: column;
+}
+
+.project-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(255,255,255,0.3);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+}
+
+/* صورة المشروع */
+.project-img {
+    width: 100%; height: 180px; overflow: hidden;
+}
+.project-img img {
+    width: 100%; height: 100%; object-fit: cover;
+    transition: 0.5s;
+}
+.project-card:hover .project-img img {
+    transform: scale(1.05); /* زووم بسيط عند الهوفر */
+}
+
+/* محتوى المشروع */
+.project-content {
+    padding: 20px;
+    display: flex; flex-direction: column; flex-grow: 1;
+}
+.project-content h3 {
+    font-size: 1.2rem; margin-bottom: 10px; color: var(--text-primary);
+}
+.project-content p {
+    font-size: 0.9rem; color: var(--text-secondary); line-height: 1.5; margin-bottom: 15px; flex-grow: 1;
+}
+
+/* التاجز (Tech Stack) */
+.tech-stack {
+    display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 20px;
+}
+.tech-stack span {
+    background: rgba(255,255,255,0.1);
+    color: var(--primary-accent);
+    padding: 4px 10px; border-radius: 50px;
+    font-size: 0.75rem; font-weight: bold;
+}
+
+/* أزرار المشروع */
+.project-links {
+    display: flex; gap: 10px;
+}
+.btn-visit, .btn-code {
+    flex: 1; text-align: center;
+    padding: 10px; border-radius: 12px;
+    text-decoration: none; font-size: 0.9rem; font-weight: bold;
+    transition: 0.3s; display: flex; align-items: center; justify-content: center; gap: 8px;
+}
+
+.btn-visit {
+    background: var(--primary-accent); color: #000;
+}
+.btn-visit:hover { opacity: 0.9; }
+
+.btn-code {
+    border: 1px solid var(--text-secondary); color: var(--text-primary);
+}
+.btn-code:hover { background: #fff; color: #000; border-color: #fff; }
