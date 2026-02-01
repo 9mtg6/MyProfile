@@ -67,12 +67,12 @@ body {
 
 /* ================= عناوين الأقسام ================= */
 .section-title {
-    display: flex; align-items: center;
-    color: var(--text-secondary); font-size: 0.85rem; font-weight: bold; text-transform: uppercase;
+    display: flex; align-items: center; margin: 25px 0 15px;
+    color: var(--text-secondary); font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
 }
 .section-title span { padding: 0 10px; z-index: 2; border-radius: 10px; }
 .section-title::after {
-    content: ''; flex-grow: 1; height: 1px; background: var(--glass-border); margin-right: 10px;
+    content: ''; flex-grow: 1; height: 1px; margin-right: 10px;
 }
 
 /* ================= الكروت (Core Design) ================= */
