@@ -1,62 +1,81 @@
-/* إعدادات المتغيرات (الألوان) للوضع الليلي (الافتراضي) */
+/* =========================================
+   1. المتغيرات وإعدادات الألوان (Variables)
+   ========================================= */
 :root {
-    --bg-gradient: linear-gradient(45deg, #121212 0%, #1a1a2e 100%);
-    --text-color: #ffffff;
+    /* الوضع الليلي (الافتراضي) */
+    --bg-gradient: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+    --text-main: #ffffff;
+    --text-sub: #cccccc;
     --card-bg: rgba(255, 255, 255, 0.08);
-    --hover-bg: rgba(255, 255, 255, 0.2);
+    --card-hover: rgba(255, 255, 255, 0.15); /* لون مؤقت قبل ظهور لون البراند */
     --border-color: rgba(255, 255, 255, 0.1);
-    --primary-color: #ffd900; /* اللون الذهبي */
-    --shadow: 0 5px 15px rgba(0,0,0,0.3);
+    --primary-color: #ffd700;
+    --shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --transition: all 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
 }
 
-/* إعدادات الوضع النهاري (Light Mode) */
+/* الوضع النهاري */
 body.light-mode {
-    --bg-gradient: linear-gradient(45deg, #f0f2f5 0%, #ffffff 100%);
-    --text-color: #333333;
-    --card-bg: rgba(0, 0, 0, 0.05);
-    --hover-bg: rgba(0, 0, 0, 0.1);
-    --border-color: rgba(0, 0, 0, 0.1);
-    --primary-color: #007bff; /* الأزرق */
-    --shadow: 0 5px 15px rgba(0,0,0,0.1);
+    --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    --text-main: #2c3e50;
+    --text-sub: #555555;
+    --card-bg: rgba(255, 255, 255, 0.6);
+    --card-hover: rgba(255, 255, 255, 0.9);
+    --border-color: rgba(0, 0, 0, 0.05);
+    --primary-color: #007bff;
+    --shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
 }
 
-* { margin: 0; padding: 0; box-sizing: border-box; }
+/* =========================================
+   2. التنسيقات العامة (Global Reset)
+   ========================================= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; /* إلغاء الوميض الأزرق */
+    outline: none;
+}
 
 body {
     font-family: 'Tajawal', sans-serif;
     background: var(--bg-gradient);
-    color: var(--text-color);
+    color: var(--text-main);
     min-height: 100vh;
     display: flex;
     justify-content: center;
-    align-items: center; /* توسيط عمودي */
+    align-items: center;
     padding: 40px 20px;
-    transition: background 0.5s ease, color 0.5s ease;
+    transition: background 0.5s ease;
 }
 
 .container {
     width: 100%;
-    max-width: 450px;
+    max-width: 500px;
     text-align: center;
 }
 
-/* زر تغيير الثيم */
+/* =========================================
+   3. العناصر الأساسية (Header & Skills)
+   ========================================= */
 .theme-btn {
     position: absolute;
     top: 20px;
-    left: 20px; /* في اليسار لأن الصفحة عربي RTL */
+    left: 20px;
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    color: var(--text-color);
-    padding: 10px;
+    color: var(--text-main);
+    width: 45px;
+    height: 45px;
     border-radius: 50%;
     cursor: pointer;
     font-size: 1.2rem;
-    transition: 0.3s;
+    backdrop-filter: blur(4px);
+    transition: var(--transition);
+    z-index: 100;
 }
-.theme-btn:hover { background: var(--hover-bg); transform: rotate(15deg); }
+.theme-btn:hover { background: var(--card-hover); transform: rotate(20deg); }
 
-/* الصورة والنصوص */
 .profile-img {
     width: 130px;
     height: 130px;
@@ -66,108 +85,181 @@ body {
     margin-bottom: 15px;
     box-shadow: var(--shadow);
 }
-.name { font-size: 1.8rem; margin-bottom: 5px; }
-.bio { font-size: 0.95rem; opacity: 0.8; margin-bottom: 15px; }
+.name { font-size: 1.8rem; font-weight: 700; margin-bottom: 5px; }
+.bio { font-size: 0.95rem; color: var(--text-sub); margin-bottom: 20px; }
 
-/* قسم المهارات */
+/* المهارات */
 .skills-container {
     display: flex;
     justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
     flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 25px;
 }
 .skill-badge {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 0.8rem;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.85rem;
     display: flex;
     align-items: center;
-    gap: 5px;
+    gap: 6px;
+    transition: var(--transition);
+    user-select: none;
 }
+.skill-badge:hover { background: var(--card-hover); transform: translateY(-2px); }
 .skill-badge i { color: var(--primary-color); }
 
-/* زر تحميل الـ CV */
-.cv-btn {
-    display: inline-block;
-    background: var(--primary-color);
-    color: #000; /* النص أسود ليكون واضحاً */
-    text-decoration: none;
-    padding: 10px 25px;
-    border-radius: 25px;
-    font-weight: bold;
-    font-size: 0.9rem;
-    margin-bottom: 30px;
-    transition: 0.3s;
-}
-.cv-btn:hover { transform: scale(1.05); opacity: 0.9; }
-body.light-mode .cv-btn { color: #fff; } /* في الوضع الفاتح النص أبيض */
-
-/* الروابط */
+/* =========================================
+   4. كروت الروابط (Links Cards)
+   ========================================= */
 .links-container { display: flex; flex-direction: column; gap: 12px; }
 
 .link-card {
+    position: relative;
     display: flex;
     align-items: center;
     background: var(--card-bg);
-    color: var(--text-color);
+    color: var(--text-main);
     text-decoration: none;
-    padding: 14px 20px;
-    border-radius: 12px;
+    padding: 16px 20px;
+    border-radius: 16px;
     border: 1px solid var(--border-color);
     backdrop-filter: blur(5px);
-    transition: 0.3s;
+    transition: var(--transition);
+    z-index: 1;
+    overflow: hidden;
 }
-.link-card:hover {
-    background: var(--hover-bg);
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
+
+/* حركة بسيطة عند الضغط */
+.link-card:active { transform: scale(0.98); }
+
+.link-card i {
+    font-size: 1.4rem;
+    width: 30px;
+    text-align: center;
+    margin-left: 15px;
+    transition: var(--transition);
 }
-.link-card i { width: 30px; font-size: 1.3rem; text-align: center; margin-left: 10px; }
-.link-card span { font-weight: bold; flex-grow: 1; }
 
-/* ألوان خاصة */
-.facebook:hover { color: #1877f2; border-color: #1877f2; }
-.instagram:hover { color: #e1306c; border-color: #e1306c; }
-.linkedin:hover { color: #0077b5; border-color: #0077b5; }
-.github:hover { color: #6e5494; border-color: #6e5494; }
-.whatsapp:hover { color: #25D366; border-color: #25D366; }
-.email:hover { color: #ea4335; border-color: #ea4335; }
+.link-card span {
+    font-weight: 600;
+    font-size: 1rem;
+    flex-grow: 1;
+    transition: var(--transition);
+}
 
+/* صف التواصل */
 .contact-row { display: flex; gap: 10px; }
-.contact-row .link-card { flex: 1; justify-content: center; padding: 12px; }
-.contact-row span { flex-grow: 0; font-size: 0.9rem; }
+.contact-row .link-card { flex: 1; justify-content: center; padding: 14px; }
+.contact-row .link-card i { margin-left: 8px; margin-right: 0; }
+.contact-row .link-card span { flex-grow: 0; }
 
-.special-link { border-color: var(--primary-color); color: var(--primary-color); }
-.special-link:hover { background: var(--primary-color); color: #000; }
-body.light-mode .special-link:hover { color: #fff; }
+/* =========================================
+   5. ألوان العلامات التجارية (Full Brand Fill)
+   ========================================= */
 
-/* صفحة المشاريع */
-.back-btn {
-    text-decoration: none; color: var(--text-color);
-    display: block; margin-bottom: 10px; font-weight: bold;
+/* قاعدة عامة: عند التحويم، لون النص يصبح أبيض والحدود تختفي */
+.link-card:hover {
+    border-color: transparent;
+    color: #fff; /* معظم التطبيقات تحتاج نص أبيض */
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    transform: translateY(-3px);
 }
-.projects-grid { display: grid; gap: 15px; }
+
+/* 1. انستجرام (تدرج لوني) */
+.instagram:hover {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+}
+
+/* 2. سناب شات (أصفر - استثناء: النص أسود) */
+.snapchat:hover {
+    background-color: #FFFC00;
+    color: #000; /* النص أسود للوضوح */
+    box-shadow: 0 0 15px rgba(255, 252, 0, 0.4);
+}
+
+/* 3. فيسبوك (أزرق) */
+.facebook:hover { background-color: #1877F2; }
+
+/* 4. لينكد إن (أزرق غامق) */
+.linkedin:hover { background-color: #0a66c2; }
+
+/* 5. واتساب (أخضر) */
+.whatsapp:hover { background-color: #25D366; }
+
+/* 6. ديسكورد (أرجواني مزرق) */
+.discord:hover { background-color: #5865F2; }
+
+/* 7. تيك توك (أبيض/أسود مع تأثير الظل) */
+.tiktok:hover {
+    background-color: #000; /* خلفية سوداء */
+    color: #fff;
+    text-shadow: 2px 2px 0px #00f2ea, -2px -2px 0px #ff0050;
+    border: 1px solid rgba(255,255,255,0.2);
+}
+/* تيك توك في الوضع النهاري (نعكس الألوان ليظهر) */
+body.light-mode .tiktok:hover {
+    background-color: #000; 
+    color: #fff;
+}
+
+/* 8. إيميل (أحمر) */
+.email:hover { background-color: #ea4335; }
+
+/* 9. جيت هب (أسود/رمادي غامق) */
+.github:hover { background-color: #24292e; }
+
+/* 10. زر المشاريع (ذهبي - استثناء: النص أسود) */
+.special-link {
+    border: 1px solid var(--primary-color);
+    color: var(--primary-color);
+}
+.special-link:hover {
+    background-color: var(--primary-color);
+    color: #000;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.4);
+}
+
+/* =========================================
+   6. صفحة المشاريع (Projects Page)
+   ========================================= */
+.back-btn {
+    display: inline-flex;
+    align-items: center;
+    color: var(--text-main);
+    text-decoration: none;
+    margin-bottom: 20px;
+    font-weight: bold;
+    transition: var(--transition);
+}
+.back-btn:hover { color: var(--primary-color); transform: translateX(5px); }
+
+.projects-grid { display: grid; gap: 15px; width: 100%; }
+
 .project-card {
     background: var(--card-bg);
     border: 1px solid var(--border-color);
-    border-radius: 12px;
-    padding: 15px;
+    border-radius: 16px;
+    padding: 20px;
     text-align: right;
-    transition: 0.3s;
+    transition: var(--transition);
 }
-.project-card:hover { transform: translateY(-3px); background: var(--hover-bg); }
-.p-icon { font-size: 1.8rem; color: var(--primary-color); margin-bottom: 8px; }
-.project-card h3 { font-size: 1.1rem; margin-bottom: 5px; }
-.project-card p { font-size: 0.9rem; opacity: 0.8; margin-bottom: 10px; }
+.project-card:hover { transform: translateY(-5px); background: var(--card-hover); box-shadow: var(--shadow); }
+
+.p-icon { font-size: 2rem; color: var(--primary-color); margin-bottom: 10px; }
+.project-card h3 { margin-bottom: 8px; font-size: 1.2rem; }
+.project-card p { font-size: 0.9rem; color: var(--text-sub); margin-bottom: 12px; }
 .p-tags span {
-    font-size: 0.75rem; background: rgba(128,128,128,0.2); padding: 3px 8px; border-radius: 5px; margin-left: 5px;
+    display: inline-block; font-size: 0.75rem; background: rgba(127, 127, 127, 0.2);
+    padding: 4px 10px; border-radius: 8px; margin-left: 5px; color: var(--text-sub);
 }
 .visit-btn {
-    display: inline-block; margin-top: 10px;
-    font-size: 0.85rem; color: var(--primary-color); text-decoration: none; font-weight: bold;
+    display: inline-block; margin-top: 15px; font-size: 0.9rem;
+    color: var(--primary-color); text-decoration: none; font-weight: bold;
+    border-bottom: 2px solid transparent;
 }
+.visit-btn:hover { border-bottom-color: var(--primary-color); }
 
-footer { margin-top: 30px; font-size: 0.8rem; opacity: 0.6; }
+footer { margin-top: 40px; font-size: 0.85rem; color: var(--text-sub); opacity: 0.7; }
