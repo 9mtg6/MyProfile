@@ -62,7 +62,7 @@ body {
     display: flex; align-items: center; margin: 25px 0 15px;
     color: var(--text-secondary); font-size: 0.85rem; font-weight: bold; text-transform: uppercase; letter-spacing: 1px;
 }
-.section-title span { background: var(--bg-dark); padding: 5px 10px; border-radius: 8px; z-index: 2; }
+.section-title span { padding: 5px 10px; border-radius: 8px; z-index: 2; }
 .section-title::after {
     content: ''; flex-grow: 1; height: 1px; background: var(--glass-border); margin-left: 10px;
 }
@@ -107,7 +107,7 @@ body {
 .facebook:hover .icon-box { background: #1877f2; color: #fff; }
 .github:hover .icon-box { background: #fff; color: #000; }
 .contact-card:hover .icon-box.phone { background: #0179ff; color: #fff; }
-.contact-card:hover .icon-box.email { background: #ea4335; color: #fff; }
+.contact-card:hover .icon-box.email { background: #ffffff; color: #000000; }
 
 /* كارت المشاريع */
 .special-project { border: 1px solid var(--primary-accent); box-shadow: 0 0 15px rgba(0, 242, 234, 0.1); }
